@@ -1,0 +1,54 @@
+/* Paleta exclusiva para perfil.html */
+:root {
+  --perfil-green: #2e7d32;
+  --perfil-green-dark: #245c28;
+  --perfil-beige: #f5f0e1;
+}
+body {
+  background: var(--perfil-beige);
+  min-height: 100vh;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+.perfil-wrapper {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  padding: 2.5rem 2rem;
+  max-width: 600px;
+  margin: 3rem auto;
+}
+.perfil-titulo {
+  color: var(--perfil-green);
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+.perfil-btn {
+  background: var(--perfil-green);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6em 1.5em;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.perfil-btn:hover {
+  background: var(--perfil-green-dark);
+}
+.perfil-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--perfil-green);
+  margin-bottom: 1.2rem;
+}
+@media (max-width: 600px) {
+  .perfil-wrapper {
+    padding: 1.2rem 0.5rem;
+  }
+  .perfil-titulo {
+    font-size: 1.3rem;
+  }
+}

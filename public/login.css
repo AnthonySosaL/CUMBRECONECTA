@@ -1,0 +1,78 @@
+:root {
+    --brand-green: #2e7d32;
+    --brand-green-dark: #245c28;
+    --brand-beige: #f5f0e1;   /* beige del home */
+  }
+  
+  /* ----- Fondo general (beige) ----- */
+  body {
+    background: var(--brand-beige) !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ----- Navbar (mismo look que en style.css) ----- */
+  .bg-primary {
+    background: var(--brand-green) !important;
+    border-color: var(--brand-green) !important;
+  }
+  .navbar-brand {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .navbar .bi-list { transition: transform 0.25s; }
+  .navbar-toggler:not(.collapsed) .bi-list { transform: rotate(90deg); }
+  .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: color 0.25s;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--brand-beige);
+    transition: width 0.25s, left 0.25s;
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 60%;
+    left: 20%;
+  }
+  
+  /* ----- Wrapper para centrar la tarjeta debajo de la navbar ----- */
+  .auth-wrapper {
+    flex: 1 0 auto;               /* ocupa todo lo que queda bajo la navbar */
+    padding: 2rem 0;
+  }
+  
+  /* ----- Tarjeta y tabs ----- */
+  .card { border: none; border-radius: 0.75rem; }
+  .card-header { background: var(--brand-green); border-radius: 0.75rem 0.75rem 0 0; }
+  
+  .nav-pills .nav-link {
+    color: #e4efe4;
+    border-radius: 0.75rem 0.75rem 0 0;
+    font-weight: 500;
+  }
+  .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    color: #fff;
+    background: var(--brand-green-dark);
+  }
+  
+  /* ----- Botón primario ----- */
+  .btn-brand {
+    background: var(--brand-green);
+    border-color: var(--brand-green);
+    color: #fff;
+  }
+  .btn-brand:hover {
+    background: var(--brand-green-dark);
+    border-color: var(--brand-green-dark);
+  }
+  

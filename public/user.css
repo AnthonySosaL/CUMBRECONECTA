@@ -1,0 +1,64 @@
+/* -------- Paleta -------- */
+:root {
+    --brand-green: #2e7d32;
+    --brand-green-dark: #245c28;
+    --brand-beige: #f5f0e1;
+  }
+  
+  /* -------- Fondo general -------- */
+  body {
+    background: var(--brand-beige);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* -------- Navbar -------- */
+  .bg-primary {
+    background: var(--brand-green) !important;
+    border-color: var(--brand-green) !important;
+  }
+  .navbar-brand {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .navbar .bi-list { transition: transform 0.25s; }
+  .navbar-toggler:not(.collapsed) .bi-list { transform: rotate(90deg); }
+  .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: color 0.25s;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--brand-beige);
+    transition: width 0.25s, left 0.25s;
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 60%;
+    left: 20%;
+  }
+  
+  /* -------- Botón verde -------- */
+  .btn-brand {
+    background: var(--brand-green);
+    border-color: var(--brand-green);
+    color: #fff;
+  }
+  .btn-brand:hover {
+    background: var(--brand-green-dark);
+    border-color: var(--brand-green-dark);
+  }
+  
+  /* -------- Cards del catálogo -------- */
+  .card-img-top {
+    height: 220px;
+    object-fit: cover;
+  }
+  

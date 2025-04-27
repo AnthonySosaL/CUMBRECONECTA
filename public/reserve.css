@@ -1,0 +1,43 @@
+:root {
+    --green: #2e7d32;
+    --green-dark: #245c28;
+    --beige: #f5f0e1;
+  }
+  
+  /* fondo general */
+  body {
+    background: var(--beige);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* navbar */
+  .bg-primary { background: var(--green) !important; }
+  .navbar-brand { font-weight: 600; text-transform: uppercase; }
+  
+  /* hero de la expedición */
+  .hero-expedicion {
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .hero-expedicion .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+  }
+  .hero-expedicion h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+  
+  /* botón principal */
+  .btn-brand {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+  }
+  .btn-brand:hover {
+    background: var(--green-dark);
+    border-color: var(--green-dark);
+  }
+  

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Pedro Mendoza",
+    "email": "a@a.com",
+    "password": "a@a.com",
+    "role": "guia",
+    "cedula": "0102030405",
+    "numero": "0995822812"
+  },
+  {
+    "id": 2,
+    "name": "c@c.com",
+    "email": "c@c.com",
+    "password": "c@c.com",
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "name": "Administrador",
+    "email": "admin@admin.com",
+    "password": "admin@admin.com",
+    "role": "admin",
+    "numero": "0995822812"
+  }
+]

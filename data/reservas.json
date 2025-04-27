@@ -1,0 +1,66 @@
+[
+  {
+    "id_expedicion": "2",
+    "expNombre": "Chimborazo Ascent",
+    "fecha": "2025-05-29",
+    "hora": "06:00",
+    "participantes": "8",
+    "equipos": [
+      "Casco"
+    ],
+    "total": "1200.00",
+    "email": "c@c.com",
+    "id_reserva": 1745712712221,
+    "estado": "rechazada",
+    "id_guias": [
+      1
+    ],
+    "motivos": {
+      "motivo_aceptacion": "sapo",
+      "motivo_rechazo": "no hay fondos",
+      "motivo_pendiente": ""
+    }
+  },
+  {
+    "id_expedicion": "1",
+    "expNombre": "Cotopaxi Summit",
+    "fecha": "2025-05-15",
+    "hora": "08:00",
+    "participantes": "1",
+    "equipos": [
+      "Crampones"
+    ],
+    "total": "120.00",
+    "email": "c@c.com",
+    "id_reserva": 1745713720938,
+    "estado": "pagado",
+    "id_guias": [
+      1
+    ],
+    "motivos": {
+      "motivo_aceptacion": "inteligente",
+      "motivo_rechazo": "sapo",
+      "motivo_pendiente": "sa"
+    },
+    "motivo_aceptacion": "inteligente"
+  },
+  {
+    "id_expedicion": "1",
+    "expNombre": "Cotopaxi Summit",
+    "fecha": "2025-05-15",
+    "hora": "08:00",
+    "participantes": "1",
+    "equipos": [
+      "Crampones"
+    ],
+    "total": "120.00",
+    "email": "c@c.com",
+    "estado": "pendiente",
+    "id_reserva": 1745728047170,
+    "motivos": {
+      "motivo_aceptacion": "",
+      "motivo_rechazo": "",
+      "motivo_pendiente": ""
+    }
+  }
+]

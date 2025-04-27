@@ -1,0 +1,46 @@
+/* ====== reservas_asignadas.css ====== */
+:root {
+  --green: #2e7d32;
+  --green-dark: #245c28;
+  --beige: #f5f0e1;
+  --paid: #2ecc71;
+  --pend: #f1c40f;
+  --fail: #e74c3c;
+}
+body {
+  background: var(--beige);
+  min-height: 100vh;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+.bg-primary { background: var(--green)!important; }
+.navbar-brand { font-weight: 600; text-transform: uppercase; }
+.navbar-toggler .bi-list { transition: .25s; }
+.navbar-toggler:not(.collapsed) .bi-list { transform: rotate(90deg); }
+
+.wrapper { background: #fff; border-radius: .85rem; }
+.card-reserva {
+  position: relative; background: #fff; border-radius: .75rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,.06);
+  transition: transform .2s,box-shadow .2s; padding: 1.25rem;
+  cursor: pointer;
+}
+.card-reserva:hover { transform: translateY(-4px); box-shadow: 0 6px 12px rgba(0,0,0,.1); }
+.card-reserva::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%; border-radius: .75rem 0 0 .75rem;
+}
+.status-pagado::before { background: var(--paid); }
+.status-pendiente::before { background: var(--pend); }
+.status-falla::before { background: var(--fail); }
+.card-reserva h5 { font-size: 1.05rem; margin-bottom: .8rem; }
+.card-reserva .info { display: flex; align-items: center; gap: .4rem; font-size: .9rem; margin-bottom: .3rem; color: #4b5563; }
+.card-reserva .info i { font-size: .95rem; }
+.card-reserva .badge { font-size: .75rem; padding: .35em .65em; }
+.badge-pagado { background: var(--paid); }
+.badge-pendiente { background: var(--pend); color: #000; }
+.badge-falla { background: var(--fail); }
+
+/* Modal detalles */
+#modalReserva .modal-header { background: var(--green); color: #fff; }
+#modalReserva .modal-footer { background: #f8f9fa; }
+#modalReserva .badge { font-size: .9em; }
+#modalReserva .form-select { max-width: 220px; }

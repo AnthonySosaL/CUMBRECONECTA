@@ -1,0 +1,17 @@
+/* ===== admin.css ===== */
+:root {
+  --admin-green: #2e7d32;
+  --admin-green-dark: #245c28;
+  --admin-beige: #f5f0e1;
+}
+body {
+  background: var(--admin-beige);
+  min-height: 100vh;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+.bg-primary { background: var(--admin-green)!important; }
+.navbar-brand { font-weight: 600; text-transform: uppercase; }
+.admin-section { background: #fff; border-radius: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,.08); padding: 2.5rem 2rem; margin-bottom: 2rem; }
+@media (max-width: 600px) {
+  .admin-section { padding: 1.2rem 0.5rem; }
+}

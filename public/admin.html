@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Panel Administrador – CumbreConecta</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <link href="admin.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- ===== NAVBAR ADMIN ===== -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm py-3">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+          <i class="bi bi-graph-up-arrow fs-4"></i><span>CumbreConecta</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+          <i class="bi bi-list fs-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+          <ul class="navbar-nav ms-auto text-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link active" id="navHome" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" id="navEnlazar" href="#">Enlazar guía con expedición</a></li>
+            <li class="nav-item"><a class="nav-link" id="navCrearExp" href="#">Crear expedición</a></li>
+            <li class="nav-item"><a class="nav-link" id="navReservas" href="#">Ver reservas</a></li>
+            <li class="nav-item"><a class="nav-link" id="navPerfil" href="#">Perfil</a></li>
+            <li class="nav-item"><a class="nav-link" href="#" id="logoutLink">Cerrar sesión</a></li>
+          </ul>
+          <span class="navbar-text ms-lg-3 d-none" id="userWelcome"></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main class="container py-5">
+    <div id="adminHome" class="admin-section">
+      <h2 class="mb-4">Bienvenido, Administrador</h2>
+      <p>Utiliza el menú para gestionar expediciones, guías y reservas.</p>
+    </div>
+    <div id="adminEnlazar" class="admin-section d-none">
+      <h2 class="mb-4">Enlazar guía con expedición</h2>
+      <form id="formEnlazarGuia" autocomplete="off">
+        <div class="mb-3">
+          <label class="form-label">Expedición</label>
+          <select class="form-select" id="enlazarExpedicion" required></select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Guías disponibles</label>
+          <div id="enlazarGuiasList" class="mb-2"></div>
+        </div>
+        <button type="submit" class="btn btn-brand">Enlazar guía(s)</button>
+        <div id="enlazarMsg" class="alert mt-3 d-none" role="alert"></div>
+      </form>
+    </div>
+    <div id="adminCrearExp" class="admin-section d-none">
+      <h2 class="mb-4">Crear nueva expedición</h2>
+      <form id="formCrearExp" autocomplete="off">
+        <div class="mb-3">
+          <label class="form-label">Nombre de la expedición</label>
+          <input type="text" class="form-control" id="expNombre" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Imagen (URL)</label>
+          <input type="url" class="form-control" id="expImagen" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Precio por persona (USD)</label>
+          <input type="number" class="form-control" id="expPrecio" min="1" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Cupo máximo</label>
+          <input type="number" class="form-control" id="expCupo" min="1" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Fechas y horas</label>
+          <div id="fechasList"></div>
+          <div class="d-flex gap-2 mt-2">
+            <input type="date" class="form-control" id="nuevaFecha" style="max-width:160px;">
+            <input type="time" class="form-control" id="nuevaHora" style="max-width:120px;">
+            <button type="button" class="btn btn-secondary" id="btnAddFecha">Agregar</button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-brand">Crear expedición</button>
+        <div id="crearExpMsg" class="alert mt-3 d-none" role="alert"></div>
+      </form>
+      <!-- Tabla de expediciones existentes -->
+      <hr class="my-4">
+      <h3 class="mb-3">Expediciones registradas</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle" id="tablaExpediciones">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Imagen</th>
+              <th>Precio</th>
+              <th>Cupo</th>
+              <th>Fechas</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div id="expedicionesMsg" class="alert mt-3 d-none" role="alert"></div>
+    </div>
+    <div id="adminReservas" class="admin-section d-none">
+      <h2 class="mb-4">Todas las reservas</h2>
+      <div class="row mb-3 g-2">
+        <div class="col-md-3">
+          <select class="form-select" id="filtroEstado">
+            <option value="">Todos los estados</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="pagado">Pagado</option>
+            <option value="rechazada">Rechazada</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <select class="form-select" id="filtroExpedicion">
+            <option value="">Todas las expediciones</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle" id="tablaReservas">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th>Expedición</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Participantes</th>
+              <th>Usuario</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div id="adminReservasMsg" class="alert mt-3 d-none" role="alert"></div>
+      <!-- Modal detalles -->
+      <div class="modal fade" id="modalReservaAdmin" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Detalle de la reserva</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modalReservaAdminBody"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="adminPerfil" class="admin-section d-none">
+      <h2 class="mb-4">Mi perfil</h2>
+      <form id="formPerfilAdmin" class="card p-4 mx-auto" style="max-width:500px;">
+        <div class="mb-3">
+          <label class="form-label">Nombre completo</label>
+          <input type="text" class="form-control" id="perfilNombre" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="perfilEmail" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Número de teléfono</label>
+          <input type="text" class="form-control" id="perfilNumero">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nueva contraseña</label>
+          <input type="password" class="form-control" id="perfilPassword" placeholder="Dejar en blanco para no cambiar">
+        </div>
+        <button type="submit" class="btn btn-brand w-100">Guardar cambios</button>
+        <div id="perfilMsg" class="alert mt-3 d-none" role="alert"></div>
+      </form>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
